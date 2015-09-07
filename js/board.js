@@ -23,4 +23,15 @@
   Board.prototype.place = function(tile, pos) {
     this.grid[pos.x][pos.y] = tile;
   };
+
+  Board.prototype.isFull = function() {
+    for (var i = 0; i < this.dim; i++) {
+      for (var j = 0; j < this.dim; j++) {
+        if (!this.grid[i][j]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
 })();
