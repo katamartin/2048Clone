@@ -4,7 +4,6 @@
   }
 
   var View = TwentyFortyEight.View = function($el) {
-    console.log("hi");
     this.$el = $el;
     this.board = new TwentyFortyEight.Board({});
     this.makeGrid();
