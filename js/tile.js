@@ -62,10 +62,8 @@
       } else {
         var tile = this.board.get([newPos.x, newPos.y]);
         if (tile.equals(this) && !tile.collapsed) {
-          this.val *= 2;
-          this.board.score += this.val;
+          this.collapse();
           newPos = newPos.plus(Tile.DIRS[dir]);
-          this.collapsed = true;
         }
         break;
       }
@@ -73,5 +71,14 @@
     this.board.empty(this.pos);
     this.pos = newPos.minus(Tile.DIRS[dir]);
     this.place();
+  };
+
+  Tile.prototype.collapse = function() {
+    this.val *= 2;
+    this.board.score += this.val;
+    this.collapsed = true;
+    if (this.val === 2048) {
+      this.board.won = true;
+    }
   };
 })();

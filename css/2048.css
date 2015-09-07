@@ -37,6 +37,7 @@ li {
   font-size: 55px;
   margin-right: 10px;
   margin-bottom: 10px;
+  color: #f9f6f2;
 }
 
 li:last-child {
@@ -60,10 +61,12 @@ ul:last-child li {
 
 .tile-2 {
   background-color: #eee4da;
+  color: #776e65;
 }
 
 .tile-4 {
   background-color: #ede0c8;
+  color: #776e65;
 }
 
 .tile-8 {
