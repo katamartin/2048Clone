@@ -40,4 +40,54 @@
     }
     return true;
   };
+
+  Board.prototype.forEach = function(dir) {
+    var iterators = [
+      "N": Board.prototype.toNorth,
+      "S": Board.prototype.toSouth,
+      "W": Board.prototype.toWest,
+      "E": Board.prototype.toEast
+    ];
+    return iterators[dir] || iterators["N"];
+  };
+
+  Board.prototype.toNorth = function(callback) {
+    for (var i = 0; i < this.dim; i++) {
+      for (var j = 0; j < this.dim; j++) {
+        if (this.get([i, j])) {
+          callback(this.get[i, j]);
+        }
+      }
+    }
+  };
+
+  Board.prototype.toSouth = function(callback) {
+    for (var i = this.dim - 1; i >= 0; i--) {
+      for (var j = 0; j < this.dim; j++) {
+        if (this.get([i, j])) {
+          callback(this.get[i, j]);
+        }
+      }
+    }
+  };
+
+  Board.prototype.toWest = function(callback) {
+    for (var j = 0; j < this.dim; j++) {
+      for (var i = 0; i < this.dim; i++) {
+        if (this.get([i, j])) {
+          callback(this.get[i, j]);
+        }
+      }
+    }
+  };
+
+  Board.prototype.toEast = function(callback) {
+    for (var j = this.dim - 1; j >= 0; j--) {
+      for (var i = 0; i < this.dim; i++) {
+        if (this.get([i, j])) {
+          callback(this.get[i, j]);
+        }
+      }
+    }
+  };
 })();
