@@ -41,8 +41,8 @@
   };
 
   Tile.prototype.slide = function(dir) {
-    var newPos = this.pos;
-    while (this.board.onBoard(newPos)) {
+    var newPos = this.pos.plus(Tile.DIRS[dir]);
+    while (this.board.onBoard(newPos) && this.board.isEmpty([newPos.x, newPos.y])) {
       newPos = newPos.plus(Tile.DIRS[dir]);
     }
     this.board.empty(this.pos);
