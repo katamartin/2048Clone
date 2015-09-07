@@ -1,0 +1,56 @@
+html, body, figure, figcaption, ul, li, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: sans-serif;
+  text-align: inherit;
+}
+
+figure {
+  position: relative;
+  display: inline-block;
+  background-color: #bbada0;
+  border: 10px solid #bbada0;
+  border-radius: 3px;
+  left: 50%;
+  margin-left: -210px;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(238, 228, 218, 0.35);
+  border-radius: 3px;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+  font-size: 55px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+li:last-child {
+  margin-right: 0px;
+}
+
+ul:last-child li {
+  margin-bottom: 0px;
+}
+
+.tile-2 {
+  background-color: #eee4da;
+}
+
+.tile-4 {
+  background-color: #ede0c8;
+}

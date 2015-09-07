@@ -21,7 +21,8 @@
     while (!this.board.isEmpty(pos)) {
       var pos = this.randomPosition();
     }
-    return new TwentyFortyEight.Coord(pos[0], pos[1]);
+    var coord = new TwentyFortyEight.Coord(pos[0], pos[1]);
+    return coord;
   };
 
   Tile.prototype.equals = function(otherTile) {

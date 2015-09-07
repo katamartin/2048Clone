@@ -4,8 +4,9 @@
   }
 
   var View = TwentyFortyEight.View = function($el) {
+    console.log("hi");
     this.$el = $el;
-    this.board = new TwentyFortyEight.Board();
+    this.board = new TwentyFortyEight.Board({});
     this.makeGrid();
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
@@ -29,9 +30,9 @@
     for (var i = 0; i < this.board.dim; i++) {
       html += "<ul>";
       for (var j = 0; j < this.board.dim; j++) {
-        var tile = this.board.get([i, j])
+        var tile = this.board.get([i, j]);
         if (tile) {
-          html += "<li class='tile-" + tile.val +  "'></li>";
+          html += "<li class='tile-" + tile.val +  "'>" + tile.val +  "</li>";
         } else {
           html += "<li></li>";
         }

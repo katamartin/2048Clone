@@ -19,7 +19,7 @@
   };
 
   Board.prototype.isEmpty = function(pos) {
-    return !!this.grid[pos[0]][pos[1]];
+    return !this.grid[pos[0]][pos[1]];
   };
 
   Board.prototype.place = function(tile, coord) {
