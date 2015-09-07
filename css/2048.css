@@ -13,7 +13,7 @@ figure {
   border: 10px solid #bbada0;
   border-radius: 3px;
   left: 50%;
-  margin-left: -210px;
+  margin-left: -225px;
   overflow: hidden;
 }
 
@@ -46,6 +46,12 @@ li:last-child {
 
 ul:last-child li {
   margin-bottom: 0px;
+}
+
+.score {
+  background-color: #bbada0;
+  border-radius: 3px;
+  width: 15%;
 }
 
 .message {
