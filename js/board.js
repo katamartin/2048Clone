@@ -19,11 +19,15 @@
   };
 
   Board.prototype.isEmpty = function(pos) {
-    return !this.grid[pos[0]][pos[1]];
+    return !this.get(pos);
   };
 
   Board.prototype.place = function(tile, coord) {
     this.grid[coord.x][coord.y] = tile;
+  };
+
+  Board.prototype.empty = function(coord) {
+    this.grid[coord.x][coord.y] = undefined;
   };
 
   Board.prototype.get = function(pos) {
@@ -41,13 +45,18 @@
     return true;
   };
 
+  Board.prototype.onBoard = function(coord) {
+    return 0 <= coord.x && coord.x < this.dim &&
+           0 <= coord.y && coord.y < this.dim;
+  };
+
   Board.prototype.forEach = function(dir) {
-    var iterators = [
+    var iterators = {
       "N": Board.prototype.toNorth,
       "S": Board.prototype.toSouth,
       "W": Board.prototype.toWest,
       "E": Board.prototype.toEast
-    ];
+    };
     return iterators[dir] || iterators["N"];
   };
 
@@ -55,7 +64,7 @@
     for (var i = 0; i < this.dim; i++) {
       for (var j = 0; j < this.dim; j++) {
         if (this.get([i, j])) {
-          callback(this.get[i, j]);
+          callback(this.get([i, j]));
         }
       }
     }
@@ -65,7 +74,7 @@
     for (var i = this.dim - 1; i >= 0; i--) {
       for (var j = 0; j < this.dim; j++) {
         if (this.get([i, j])) {
-          callback(this.get[i, j]);
+          callback(this.get([i, j]));
         }
       }
     }
@@ -75,7 +84,7 @@
     for (var j = 0; j < this.dim; j++) {
       for (var i = 0; i < this.dim; i++) {
         if (this.get([i, j])) {
-          callback(this.get[i, j]);
+          callback(this.get([i, j]));
         }
       }
     }
@@ -85,7 +94,7 @@
     for (var j = this.dim - 1; j >= 0; j--) {
       for (var i = 0; i < this.dim; i++) {
         if (this.get([i, j])) {
-          callback(this.get[i, j]);
+          callback(this.get([i, j]));
         }
       }
     }

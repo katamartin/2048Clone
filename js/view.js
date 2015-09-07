@@ -21,8 +21,11 @@
   View.prototype.handleKeyEvent = function(event) {
     event.preventDefault();
     if (View.DIRS[event.keyCode]) {
-      var dir = View.DIRS[event.keyCode]
-      this.board.forEach(dir)(function(tile) { tile.slide(dir) } );
+      var dir = View.DIRS[event.keyCode];
+      this.board.forEach(dir).call(this.board, function(tile) {
+        tile.slide(dir);
+      });
+      this.makeGrid();
     }
   };
 
