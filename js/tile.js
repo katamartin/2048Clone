@@ -7,6 +7,7 @@
     this.board = params.board;
     this.val = params.val || 2;
     this.pos = params.pos || this.randomEmptyPosition();
+    this.place();
   };
 
   Tile.prototype.randomPosition = function() {

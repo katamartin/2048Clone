@@ -6,6 +6,8 @@
   var Board = TwentyFortyEight.Board = function(params) {
     this.dim = params.dim || 4;
     this.makeGrid();
+    new TwentyFortyEight.Tile({board: this});
+    new TwentyFortyEight.Tile({board: this});
   };
 
   Board.prototype.makeGrid = function() {
@@ -20,8 +22,12 @@
     return !!this.grid[pos[0]][pos[1]];
   };
 
-  Board.prototype.place = function(tile, pos) {
-    this.grid[pos.x][pos.y] = tile;
+  Board.prototype.place = function(tile, coord) {
+    this.grid[coord.x][coord.y] = tile;
+  };
+
+  Board.prototype.get = function(pos) {
+    return this.grid[pos[0]][pos[1]];
   };
 
   Board.prototype.isFull = function() {
