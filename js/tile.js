@@ -3,7 +3,7 @@
     window.TwentyFortyEight = {};
   }
 
-  var Tile = TwentyFortyEight.View = function(params) {
+  var Tile = TwentyFortyEight.Tile = function(params) {
     this.board = params.board;
     this.val = params.val || 2;
     this.pos = params.pos || this.randomEmptyPosition();
