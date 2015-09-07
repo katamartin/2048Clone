@@ -33,7 +33,7 @@
   };
 
   Tile.prototype.equals = function(otherTile) {
-    return this.Tile.val === otherTile.val;
+    return this.val === otherTile.val;
   };
 
   Tile.prototype.place = function() {
@@ -42,8 +42,16 @@
 
   Tile.prototype.slide = function(dir) {
     var newPos = this.pos.plus(Tile.DIRS[dir]);
-    while (this.board.onBoard(newPos) && this.board.isEmpty([newPos.x, newPos.y])) {
-      newPos = newPos.plus(Tile.DIRS[dir]);
+    while (this.board.onBoard(newPos)) {
+      if (this.board.isEmpty([newPos.x, newPos.y])) {
+        newPos = newPos.plus(Tile.DIRS[dir]);
+      } else {
+        if (this.board.get([newPos.x, newPos.y]).equals(this)) {
+          this.val *= 2;
+          newPos = newPos.plus(Tile.DIRS[dir]);
+        }
+        break;
+      }
     }
     this.board.empty(this.pos);
     this.pos = newPos.minus(Tile.DIRS[dir]);

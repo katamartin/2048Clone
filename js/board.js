@@ -6,8 +6,13 @@
   var Board = TwentyFortyEight.Board = function(params) {
     this.dim = params.dim || 4;
     this.makeGrid();
-    new TwentyFortyEight.Tile({board: this});
-    new TwentyFortyEight.Tile({board: this});
+    this.addTiles(2);
+  };
+
+  Board.prototype.addTiles = function(num) {
+    for (var i = 0; i < num; i++) {
+      new TwentyFortyEight.Tile({board: this});
+    }
   };
 
   Board.prototype.makeGrid = function() {

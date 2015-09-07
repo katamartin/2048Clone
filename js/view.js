@@ -19,11 +19,12 @@
 
   View.prototype.handleKeyEvent = function(event) {
     event.preventDefault();
-    if (View.DIRS[event.keyCode]) {
+    if (View.DIRS[event.keyCode] && !this.board.isFull()) {
       var dir = View.DIRS[event.keyCode];
       this.board.forEach(dir).call(this.board, function(tile) {
         tile.slide(dir);
       });
+      this.board.addTiles(1);
       this.makeGrid();
     }
   };
