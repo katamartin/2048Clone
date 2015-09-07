@@ -46,9 +46,11 @@
       if (this.board.isEmpty([newPos.x, newPos.y])) {
         newPos = newPos.plus(Tile.DIRS[dir]);
       } else {
-        if (this.board.get([newPos.x, newPos.y]).equals(this)) {
+        var tile = this.board.get([newPos.x, newPos.y]);
+        if (tile.equals(this) && !tile.collapsed) {
           this.val *= 2;
           newPos = newPos.plus(Tile.DIRS[dir]);
+          this.collapsed = true;
         }
         break;
       }

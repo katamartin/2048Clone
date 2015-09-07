@@ -21,6 +21,7 @@
     event.preventDefault();
     if (View.DIRS[event.keyCode] && !this.board.isFull()) {
       var dir = View.DIRS[event.keyCode];
+      this.board.forEach().call(this.board, function(tile) { tile.collapsed = false; });
       this.board.forEach(dir).call(this.board, function(tile) {
         tile.slide(dir);
       });
