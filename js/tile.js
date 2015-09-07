@@ -36,6 +36,20 @@
     return this.val === otherTile.val;
   };
 
+  Tile.prototype.matchingNeighbor = function() {
+    var dirs = Object.keys(Tile.DIRS);
+    for (var i = 0; i < 4; i++) {
+      var newPos = this.pos.plus(Tile.DIRS[dirs[i]]);
+      if (this.board.onBoard(newPos)) {
+        var tile = this.board.get([newPos.x, newPos.y]);
+        if (tile && this.equals(tile)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   Tile.prototype.place = function() {
     this.board.place(this, this.pos);
   };
@@ -49,6 +63,7 @@
         var tile = this.board.get([newPos.x, newPos.y]);
         if (tile.equals(this) && !tile.collapsed) {
           this.val *= 2;
+          this.board.score += this.val;
           newPos = newPos.plus(Tile.DIRS[dir]);
           this.collapsed = true;
         }

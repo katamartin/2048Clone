@@ -7,6 +7,7 @@
     this.dim = params.dim || 4;
     this.makeGrid();
     this.addTiles(2);
+    this.score = 0;
   };
 
   Board.prototype.addTiles = function(num) {
@@ -39,10 +40,23 @@
     return this.grid[pos[0]][pos[1]];
   };
 
+  Board.prototype.isOver = function() {
+    for (var i = 0; i < this.dim; i++) {
+      for (var j = 0; j < this.dim; j++) {
+        if (!this.get[i, j]) {
+          return false;
+        } else if(this.get([i, j]).matchingNeighbor()) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
   Board.prototype.isFull = function() {
     for (var i = 0; i < this.dim; i++) {
       for (var j = 0; j < this.dim; j++) {
-        if (!this.grid[i][j]) {
+        if (!this.get([i, j])) {
           return false;
         }
       }

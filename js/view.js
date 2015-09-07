@@ -19,15 +19,36 @@
 
   View.prototype.handleKeyEvent = function(event) {
     event.preventDefault();
-    if (View.DIRS[event.keyCode] && !this.board.isFull()) {
+    if (View.DIRS[event.keyCode] && !this.board.isOver()) {
       var dir = View.DIRS[event.keyCode];
-      this.board.forEach().call(this.board, function(tile) { tile.collapsed = false; });
-      this.board.forEach(dir).call(this.board, function(tile) {
-        tile.slide(dir);
-      });
-      this.board.addTiles(1);
-      this.makeGrid();
+      this.updateBoard(dir);
     }
+    if (this.board.isOver()) {
+      this.gameOver();
+    }
+  };
+
+  View.prototype.updateBoard = function (dir) {
+    this.board.forEach().call(this.board, function(tile) {
+      tile.collapsed = false;
+    });
+    this.board.forEach(dir).call(this.board, function(tile) {
+      tile.slide(dir);
+    });
+    if (!this.board.isFull()) {
+      this.board.addTiles(1);
+    }
+    this.makeGrid();
+    this.updateScore();
+  };
+
+  View.prototype.gameOver = function() {
+    var $over = $("<div class='message'>Game Over</div>");
+    this.$el.append($over);
+  };
+
+  View.prototype.updateScore = function() {
+    $(".score").html(this.board.score);
   };
 
   View.prototype.forEach = function(callback) {
@@ -36,8 +57,8 @@
         if (el) {
           callback(el);
         }
-      })
-    })
+      });
+    });
   };
 
   View.prototype.makeGrid = function() {
