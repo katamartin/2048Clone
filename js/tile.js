@@ -26,4 +26,8 @@
   Tile.prototype.equals = function(otherTile) {
     return this.Tile.val === otherTile.val;
   };
+
+  Tile.prototype.place = function() {
+    this.board.place(this, this.pos);
+  };
 })();

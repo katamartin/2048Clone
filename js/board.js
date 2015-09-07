@@ -19,4 +19,8 @@
   Board.prototype.isEmpty = function(pos) {
     return !!this.grid[pos[0]][pos[1]];
   };
+
+  Board.prototype.place = function(tile, pos) {
+    this.grid[pos.x][pos.y] = tile;
+  };
 })();
