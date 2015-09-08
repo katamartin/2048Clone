@@ -66,6 +66,14 @@ li {
   color: #f9f6f2;
 }
 
+.about {
+  position: absolute;
+  width: 450px;
+  left: 50%;
+  margin-left: -225px;
+  font-weight: 300;
+}
+
 @keyframes bubble {
   0% {
     opacity: 0;
