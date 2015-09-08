@@ -12,7 +12,7 @@
 
   Board.prototype.addTiles = function(num) {
     for (var i = 0; i < num; i++) {
-      new TwentyFortyEight.Tile({board: this});
+      var tile = new TwentyFortyEight.Tile({board: this});
     }
   };
 

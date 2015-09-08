@@ -37,6 +37,19 @@ li {
   font-size: 55px;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+.game-container div div {
+  position: absolute;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+  font-size: 55px;
+  width: 100px;
+  height: 100px;
+  transition-property: left, top;
+  transition-duration: 500ms;
   color: #f9f6f2;
 }
 
@@ -65,48 +78,135 @@ ul:last-child li {
   padding-top: 30%;
 }
 
-.tile-2 {
+.tile-2, .tile-2:before {
   background-color: #eee4da;
   color: #776e65;
+  content: "2";
 }
 
-.tile-4 {
+.tile-4, .tile-4:before {
   background-color: #ede0c8;
   color: #776e65;
+  content: "4";
 }
 
-.tile-8 {
+.tile-8, .tile-8:before {
   background-color: #f2b179;
+  content: "8";
 }
 
-.tile-16 {
+.tile-16, .tile-16:before {
   background-color: #f59563;
+  content: "16";
 }
 
-.tile-32 {
+.tile-32, .tile-32:before {
   background-color: #f67c5f;
+  content: "32";
 }
 
-.tile-64 {
+.tile-64, .tile-64:before {
   background-color: #f65e3b;
+  content: "64";
 }
 
-.tile-128 {
+.tile-128, .tile-128:before {
   background-color: #edcf72;
+  content: "128";
 }
 
-.tile-256 {
+.tile-256, .tile-256:before {
   background-color: #edcc61;
+  content: "256";
 }
 
-.tile-512 {
+.tile-512, .tile-512:before {
   background-color: #edc850;
+  content: "512";
 }
 
-.tile-1024 {
+.tile-1024, .tile-1024:before {
   background-color: #edc53f;
+  content: "1024";
 }
 
-.tile-2048 {
+.tile-2048, .tile-2048:before {
   background-color: #edc22e;
+  content: "2048"
+}
+
+.pos-0-0 {
+  left: 0px;
+}
+
+.pos-0-1 {
+  left: 110px;
+}
+
+.pos-0-2 {
+  left: 220px;
+}
+
+.pos-0-3 {
+  left: 330px;
+}
+
+.pos-1-0 {
+  left: 0px;
+  top: 110px;
+}
+
+.pos-1-1 {
+  left: 110px;
+  top: 110px;
+}
+
+.pos-1-2 {
+  left: 220px;
+  top: 110px;
+}
+
+.pos-1-3 {
+  left: 330px;
+  top: 110px;
+}
+
+.pos-2-0 {
+  left: 0px;
+  top: 220px;
+}
+
+.pos-2-1 {
+  left: 110px;
+  top: 220px;
+}
+
+.pos-2-2 {
+  left: 220px;
+  top: 220px;
+}
+
+.pos-2-3 {
+  left: 330px;
+  top: 220px;
+}
+
+.pos-3-0 {
+  left: 0px;
+  top: 330px;
+}
+
+.pos-3-1 {
+  left: 110px;
+  top: 330px;
+}
+
+.pos-3-2 {
+  left: 220px;
+  top: 330px;
+}
+
+.pos-3-3 {
+  left: 330px;
+  top: 330px;
 }

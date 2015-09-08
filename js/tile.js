@@ -52,6 +52,11 @@
 
   Tile.prototype.place = function() {
     this.board.place(this, this.pos);
+    var tileEl = $("<div></div>");
+    $(".game-board div").eq(0).append(tileEl);
+    tileEl.addClass(this.className());
+    tileEl.addClass("new");
+    this.$el = tileEl;
   };
 
   Tile.prototype.slide = function(dir) {
@@ -62,7 +67,7 @@
       } else {
         var tile = this.board.get([newPos.x, newPos.y]);
         if (tile.equals(this) && !tile.collapsed) {
-          this.collapse();
+          this.collapse(tile);
           newPos = newPos.plus(Tile.DIRS[dir]);
         }
         break;
@@ -70,10 +75,25 @@
     }
     this.board.empty(this.pos);
     this.pos = newPos.minus(Tile.DIRS[dir]);
-    this.place();
+    this.board.place(this, this.pos);
+    this.updateClasses();
   };
 
-  Tile.prototype.collapse = function() {
+  Tile.prototype.updateClasses = function() {
+    this.$el.removeClass();
+    this.$el.addClass(this.className());
+  };
+
+  Tile.prototype.className = function() {
+    var name = "pos-" + this.pos.x + "-" + this.pos.y + " tile-" + this.val;
+    if (this.collapsed) {
+      name += " collapsed";
+    }
+    return name;
+  };
+
+  Tile.prototype.collapse = function(tile) {
+    tile.$el.remove();
     this.val *= 2;
     this.board.score += this.val;
     this.collapsed = true;

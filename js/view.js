@@ -38,7 +38,6 @@
     if (!this.board.isFull()) {
       this.board.addTiles(1);
     }
-    this.makeGrid();
     this.updateScore();
   };
 
@@ -61,21 +60,40 @@
     });
   };
 
+  // View.prototype.makeGrid = function() {
+  //   var html = "";
+  //   for (var i = 0; i < this.board.dim; i++) {
+  //     html += "<ul>";
+  //     for (var j = 0; j < this.board.dim; j++) {
+  //       var tile = this.board.get([i, j]);
+  //       if (tile) {
+  //         html += "<li class='tile-" + tile.val +  "'>" + tile.val +  "</li>";
+  //       } else {
+  //         html += "<li></li>";
+  //       }
+  //     }
+  //     html += "</ul>";
+  //   }
+  //   this.$el.html(html);
+  //   this.$li = this.$el.find("li");
+  // };
+
   View.prototype.makeGrid = function() {
-    var html = "";
+    var html = $("<div></div>");
     for (var i = 0; i < this.board.dim; i++) {
-      html += "<ul>";
+      var ul = $("<ul></ul>");
+      html.append(ul);
       for (var j = 0; j < this.board.dim; j++) {
         var tile = this.board.get([i, j]);
+        var li = ul.append("<li></li>");
         if (tile) {
-          html += "<li class='tile-" + tile.val +  "'>" + tile.val +  "</li>";
-        } else {
-          html += "<li></li>";
+          var tileEl = $("<div></div>");
+          tileEl.addClass(tile.className());
+          tile.$el = tileEl;
+          html.append(tileEl);
         }
       }
-      html += "</ul>";
     }
     this.$el.html(html);
-    this.$li = this.$el.find("li");
   };
 })();
