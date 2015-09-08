@@ -145,10 +145,21 @@ ul:last-of-type li {
   text-align: center;
   color: #776e65;
   background-color: rgba(238, 228, 218, 0.73);
-  padding-top: 30%;
   top: -10px;
   left: -10px;
   padding: 10px;
+  padding-top: 25%;
+}
+
+button {
+  border-radius: 3px;
+  border: none;
+  padding: 15px;
+  background-color: #776e65;
+  color: rgb(238, 228, 218);
+  display: block;
+  margin: auto;
+  margin-top: 25%;
 }
 
 .tile-2, .tile-2:before {

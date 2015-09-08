@@ -49,15 +49,24 @@
   View.prototype.gameOver = function() {
     var $over = $("<div class='message'>Game Over</div>");
     $over.append("<button class='new-game'>Play Again?</button>");
-    this.playAgain = $(".new-game").on("click", this.restart.bind(this));
     this.$el.append($over);
+    this.playAgain = $(".new-game").on("click", this.restart.bind(this));
   };
 
   View.prototype.gameWon = function() {
     var $over = $("<div class='message'>You win!</div>");
     $over.append("<button class='new-game'>Play Again?</button>");
-    this.playAgain = $(".new-game").on("click", this.restart.bind(this));
     this.$el.append($over);
+    this.playAgain = $(".new-game").on("click", this.restart.bind(this));
+  };
+
+  View.prototype.restart = function() {
+    this.playAgain.off();
+    this.playAgain = undefined;
+    $(".message").remove();
+    this.board = new TwentyFortyEight.Board({});
+    this.updateScore();
+    this.makeGrid();
   };
 
   View.prototype.updateScore = function() {
