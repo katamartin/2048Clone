@@ -41,6 +41,25 @@ Board.prototype.toSouth = function(callback) {
 };
 ```
 
+## Tile Display
+
+Tiles are represented in the DOM by `div`s labeled with classes corresponding to
+tile value, position, and status (e.g. `.pos-1-2`, `.collapsed`). After each slide,
+instances of `Tile` update the classes of their corresponding DOM element. The
+class name string is defined in the `className` method:
+
+```
+Tile.prototype.className = function() {
+  var name = "pos-" + this.pos.x + "-" + this.pos.y + " tile-" + this.val;
+  if (this.collapsed) {
+    name += " collapsed";
+  }
+  return name;
+};
+```
+Because instances of `Tile` are consistently represented by a single DOM element,
+transitions between positions and states can occur smoothly.
+
 ## Gameplay
 ![play]
 
