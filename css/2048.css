@@ -1,9 +1,14 @@
+* {
+  color: #776e65;
+}
+
 html, body, figure, figcaption, ul, li, h1 {
   margin: 0;
   padding: 0;
   border: 0;
   font-family: sans-serif;
   text-align: inherit;
+  font-weight: bold;
 }
 
 figure {
@@ -20,6 +25,12 @@ figure {
 h1 {
   text-align: center;
   color: #776e65;
+  display: inline-block;
+  left: calc(50% - 225px);
+  position: absolute;
+  margin: 0px 0px 30px 0px;
+  font-size: 65px;
+  line-height: 100%;
 }
 
 ul {
@@ -111,7 +122,19 @@ ul:last-of-type li {
 .score {
   background-color: #bbada0;
   border-radius: 3px;
-  width: 15%;
+  width: 120px;
+  left: 50%;
+  margin-top: 20px;
+  margin-left: calc(225px - 120px);
+  position: relative;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  color: #f9f6f2;
+}
+
+.score:before {
+  content: "SCORE\00000a";
+  white-space: pre;
 }
 
 .message {
