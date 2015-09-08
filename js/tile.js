@@ -73,10 +73,14 @@
         break;
       }
     }
-    this.board.empty(this.pos);
-    this.pos = newPos.minus(Tile.DIRS[dir]);
-    this.board.place(this, this.pos);
-    this.updateClasses();
+    newPos = newPos.minus(Tile.DIRS[dir]);
+    if (!this.pos.equals(newPos)) {
+      this.board.empty(this.pos);
+      this.pos = newPos;
+      this.board.place(this, this.pos);
+      this.updateClasses();
+      this.board.moved = true;
+    }
   };
 
   Tile.prototype.updateClasses = function() {

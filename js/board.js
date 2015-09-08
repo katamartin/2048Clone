@@ -43,7 +43,7 @@
   Board.prototype.isOver = function() {
     for (var i = 0; i < this.dim; i++) {
       for (var j = 0; j < this.dim; j++) {
-        if (!this.get[i, j]) {
+        if (!this.get([i, j])) {
           return false;
         } else if(this.get([i, j]).matchingNeighbor()) {
           return false;

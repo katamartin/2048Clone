@@ -32,10 +32,11 @@
     this.board.forEach().call(this.board, function(tile) {
       tile.collapsed = false;
     });
+    this.board.moved = false;
     this.board.forEach(dir).call(this.board, function(tile) {
       tile.slide(dir);
     });
-    if (!this.board.isFull()) {
+    if (!this.board.isFull() && this.board.moved) {
       this.board.addTiles(1);
     }
     this.updateScore();
@@ -59,7 +60,7 @@
       });
     });
   };
-  
+
   View.prototype.makeGrid = function() {
     var html = $("<div></div>");
     for (var i = 0; i < this.board.dim; i++) {
