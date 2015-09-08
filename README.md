@@ -14,4 +14,4 @@ value collide. The game is won by merging until 2048 is reached.
 ## Screenshots
 ![play]
 
-[play]: ./game_play.png
+[play]: ./game_play.gif
