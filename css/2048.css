@@ -203,6 +203,10 @@ ul:last-of-type li {
   content: "1024";
 }
 
+.game-board div div.tile-1024, .game-board div div.tile-2048 {
+  font-size: 35px;
+}
+
 .tile-2048, .tile-2048:before {
   background-color: #edc22e;
   content: "2048"

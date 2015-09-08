@@ -18,13 +18,12 @@
   };
 
   View.prototype.handleKeyEvent = function(event) {
-    event.preventDefault();
-    if (View.DIRS[event.keyCode] && !this.board.isOver()) {
-      var dir = View.DIRS[event.keyCode];
-      this.updateBoard(dir);
-    }
-    if (this.board.isOver()) {
-      this.gameOver();
+    if (!this.playAgain && View.DIRS[event.keyCode]) {
+      event.preventDefault();
+      if (!this.board.isOver()) {
+        var dir = View.DIRS[event.keyCode];
+        this.updateBoard(dir);
+      }
     }
   };
 
@@ -40,10 +39,24 @@
       this.board.addTiles(1);
     }
     this.updateScore();
+    if (this.board.won) {
+      this.gameWon();
+    } else if(this.board.isOver()) {
+      this.gameOver();
+    }
   };
 
   View.prototype.gameOver = function() {
     var $over = $("<div class='message'>Game Over</div>");
+    $over.append("<button class='new-game'>Play Again?</button>");
+    this.playAgain = $(".new-game").on("click", this.restart.bind(this));
+    this.$el.append($over);
+  };
+
+  View.prototype.gameWon = function() {
+    var $over = $("<div class='message'>You win!</div>");
+    $over.append("<button class='new-game'>Play Again?</button>");
+    this.playAgain = $(".new-game").on("click", this.restart.bind(this));
     this.$el.append($over);
   };
 
