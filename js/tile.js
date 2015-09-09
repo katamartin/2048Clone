@@ -5,7 +5,7 @@
 
   var Tile = TwentyFortyEight.Tile = function(params) {
     this.board = params.board;
-    this.val = params.val || 2;
+    this.val = params.val || this.twoOrFour();
     this.pos = params.pos || this.randomEmptyPosition();
     this.place();
   };
@@ -15,6 +15,13 @@
     "S": new TwentyFortyEight.Coord(1, 0),
     "W": new TwentyFortyEight.Coord(0, -1),
     "E": new TwentyFortyEight.Coord(0, 1)
+  };
+
+  Tile.prototype.twoOrFour = function() {
+    if (Math.random() < 0.125) {
+      return 4;
+    }
+    return 2;
   };
 
   Tile.prototype.randomPosition = function() {
